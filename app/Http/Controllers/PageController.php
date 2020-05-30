@@ -29,8 +29,11 @@ class PageController extends Controller
         return view('page.producttype',compact('product_type','sp_khac','loai','sp_theoloai'));
     }
 
-    public function  ProductDetail() {
-        return view('page.productdetail');
+    public function  ProductDetail(Request $req) {
+        $product_detail = Product::where('id',$req->id)->first();
+        $product_related = Product::where('id_type',$product_detail->id_type)->paginate(3);
+        $best_seller = Product::where('new',1)->get(); 
+        return view('page.productdetail',compact('product_detail','product_related','best_seller'));
     }
 
     public function  Contacts() {

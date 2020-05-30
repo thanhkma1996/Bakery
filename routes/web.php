@@ -27,7 +27,8 @@ Route::get('/product-type/{type}', [
     'uses'=>'PageController@getProductType'
 ]);
 
-Route::get('/product-detail', [
+Route::get('/product-detail/{id}', [
+    'as' => 'product-detail',
     'uses'=>'PageController@ProductDetail'
 ]);
 

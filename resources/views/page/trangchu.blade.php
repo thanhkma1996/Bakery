@@ -42,7 +42,7 @@
                                                 <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
                                             @endif
                                                 <div class="single-item-header">
-                                                    <a href="product.html"><img src="source/image/product/{{ $new_p -> image}}" alt=""></a>
+                                                    <a href="{{ route('product-detail',$new_p -> id)}}"><img src="source/image/product/{{ $new_p -> image}}" alt=""></a>
                                                 </div>
                                                 <div class="single-item-body">
                                                     <p class="single-item-title">{{{ $new_p -> name}}}</p>
@@ -86,7 +86,7 @@
                                                 <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
                                             @endif
                                                 <div class="single-item-header">
-                                                    <a href="product.html"><img src="source/image/product/{{ $product_old -> image}}" alt=""></a>
+                                                    <a href="{{ route('product-detail',$product_old -> id)}}"><img src="source/image/product/{{ $product_old -> image}}" alt=""></a>
                                                 </div>
                                                 <div class="single-item-body">
                                                     <p class="single-item-title">{{{ $product_old -> name}}}</p>
