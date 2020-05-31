@@ -17,27 +17,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', [
+Route::get('index', [
     'as' => 'trang-chu',
     'uses'=>'PageController@getIndex'
 ]);
 
-Route::get('/product-type/{type}', [
+Route::get('product-type/{type}', [
     'as' => 'loaisanpham',
     'uses'=>'PageController@getProductType'
 ]);
 
-Route::get('/product-detail/{id}', [
+Route::get('product-detail/{id}', [
     'as' => 'product-detail',
     'uses'=>'PageController@ProductDetail'
 ]);
 
-Route::get('/contacts', [
+Route::get('contacts', [
     'as' => 'lien-he',
     'uses'=>'PageController@contacts'
 ]);
 
-Route::get('/about', [
+Route::get('about', [
     'as' => 'gioi-thieu',
     'uses'=>'PageController@About'
+]);
+
+Route::get('add-to-cart/{id}',[
+    'as' => "themgiohang",
+    'uses'=>'PageController@getAddtoCart'
 ]);
