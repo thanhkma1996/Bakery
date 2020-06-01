@@ -5207,3 +5207,11 @@ border:none;}
 .beta-rotator canvas{width:100%;}
 .beta-rotator {font-family: "Open Sans",sans-serif;}
 .history-slider span {font-family: "Open Sans",sans-serif;}
+
+.notifi-checkout {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: red;
+    font-weight: bold;
+}

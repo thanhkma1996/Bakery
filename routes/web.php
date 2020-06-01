@@ -46,3 +46,45 @@ Route::get('add-to-cart/{id}',[
     'as' => "themgiohang",
     'uses'=>'PageController@getAddtoCart'
 ]);
+
+Route::get('delete-cart/{id}',[
+    'as' => 'xoagiohang',
+    'uses' => 'PageController@getDeletetoCart'
+]);
+
+Route::get('check-out', [
+    'as' => 'dathang',
+    'uses'=>'PageController@getCheckout'
+]);
+
+Route::post('check-out', [
+    'as' => 'dathang',
+    'uses'=>'PageController@postCheckout'
+]);
+
+Route::get('register', [
+    'as' => 'dangki',
+    'uses'=>'PageController@getRegister'
+]);
+
+Route::get('login', [
+    'as' => 'dangnhap',
+    'uses'=>'PageController@getLogin'
+]);
+
+Route::post('register', [
+    'as' => 'dangki',
+    'uses'=>'PageController@postRegister'
+]);
+
+Route::post('login', [
+    'as' => 'dangnhap',
+    'uses'=>'PageController@postLogin'
+]);
+
+Route::get('logout', [
+    'as' => 'dangxuat',
+    'uses'=>'PageController@getLogout'
+]);
+
+

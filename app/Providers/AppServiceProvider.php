@@ -26,24 +26,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        view()->composer('header', function ($views) {
-            //
+        //chia se du lieu qua view(o day la view header)
+        view()->composer(['header','page.checkout'],function($view){
             $product_type = ProductType::all();
-            $views->with('product_type',$product_type );
+            $view->with('product_type',$product_type);
+
         });
 
-        view()->composer('header',function($views){
-            if(Session('cart')){
+        view()->composer(['header','page.checkout'],function($view){
+            if (Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Cart($oldCart);
-                $views->with([
-                    'cart'=>Session::get('cart'),
+                $view->with([
+                    'cart' => Session::get('cart'), 
                     'product_cart' => $cart->items,
                     'totalPrice'=>$cart->totalPrice,
                     'totalQty'=>$cart->totalQty
                 ]);
-            }
+            } 
         });
     }
 }

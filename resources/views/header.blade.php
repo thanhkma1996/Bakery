@@ -3,15 +3,19 @@
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href=""><i class="fa fa-home"></i> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</a></li>
-						<li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
+						<li><a href=""><i class="fa fa-home"></i> Ha Noi</a></li>
+						<li><a href=""><i class="fa fa-phone"></i> 0389 487 864</a></li>
 					</ul>
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-						<li><a href="#">Đăng kí</a></li>
-						<li><a href="#">Đăng nhập</a></li>
+						@if(Auth::check())
+							<li><a href="#">Chào bạn {{ Auth::user()->full_name}}</a></li>
+							<li><a href="{{ route('dangxuat') }}">Đăng xuất</a></li>
+						@else
+						<li><a href="{{ route('dangki') }}">Đăng kí</a></li>
+						<li><a href="{{ route('dangnhap') }}">Đăng nhập</a></li>
+						@endif
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -46,27 +50,43 @@
 							<div class="beta-dropdown cart-body">
 								@foreach($product_cart as $product)
 									<div class="cart-item">
+										<a class="cart-item-delete" href="{{ route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-times"></i></a>
 										<div class="media">
 											<a class="pull-left" href="#"><img src="source/image/product/{{ $product['item']['image'] }}" alt=""></a>
 											<div class="media-body">
 												<span class="cart-item-title">{{ $product['item']['name'] }}</span>
-												<span class="cart-item-amount">{{ $product['qty'] }}*<span>{{ $product['item']['unit_price'] }}</span></span>
+												<span class="cart-item-amount">{{ $product['qty'] }}*<span>
+												@if($product['item']['promotion_price'] == 0)
+													{{ number_format($product['item']['unit_price']) }}
+												@else 
+													{{ number_format($product['item']['promotion_price']) }}
+												@endif
+												</span></span>
 											</div>
 										</div>
 									</div>
 								@endforeach
 								<div class="cart-caption">
-									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{ Session('cart')->totalPrice }}</span></div>
+									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">
+										{{ number_format(Session('cart')->totalPrice) }} 
+									</span></div>
 									<div class="clearfix"></div>
 
 									<div class="center">
 										<div class="space10">&nbsp;</div>
-										<a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+										<a href="{{ route('dathang')}}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
 									</div>
 								</div>
 							</div>
 						</div> <!-- .cart -->
-					@endif
+					@else
+						<div class="cart">
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> 
+									Giỏ hàng (Trống) 
+								<i class="fa fa-chevron-down"></i>
+							</div>
+						</div>
+					 @endif
 					</div>
 				</div>
 				<div class="clearfix"></div>
