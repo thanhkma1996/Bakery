@@ -87,4 +87,8 @@ Route::get('logout', [
     'uses'=>'PageController@getLogout'
 ]);
 
+Route::get('search', [
+    'as' => 'tim-kiem',
+    'uses'=>'PageController@getSearch'
+]);
 
